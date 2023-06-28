@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especificación del terreno</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="icon" href="Imgs/icono.png">
+    <style>
+        body {
+            background-color: white;
+            margin: 0; 
+            overflow-x: hidden;
+        }
+
+        #container{
+            margin-bottom: 0px;
+        }
+
+        nav {
+            background-color: white;
+            height: 52px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 2px 2px 7px gray;
+            margin-bottom: 0;
+            z-index: 3;
+        }
+
+        div #logo{
+            height: 31px;
+            width: 106px;
+            border-radius: 5px;
+            margin-top: 12px;
+        }
+
+
+        p {
+            font-size: 13px;
+            padding-top: 13px;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .ingresar a {
+            text-decoration: none;
+            color: black;
+            transition: color ease .3s;
+        }
+
+        a:hover{
+            color: gray;
+        }
+
+        .ingresar img {
+            width: 18px;
+            height: 18px;
+            padding-right: 1px;
+        }
+        .profile-imagen-container {
+           display: flex;
+           align-items: center;
+            margin-top: 100px;
+            margin-left: 80px; 
+            width: 300px; 
+        }
+        .profile-imagen {
+            width: 100px; 
+            height: 100px;
+            border-radius: 50%; 
+            object-fit: cover;
+            border: 2px solid gray;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+
+        }
+        .profile-text {
+            margin-left: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .profile-text p:first-child {
+            font-size: 18px; 
+            font-weight: bold; 
+            margin-bottom: 1px; 
+        }
+        .profile-text p:first-child {
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+        }
+        .profile-text p:last-child {
+            font-size: 15px; 
+            margin-bottom: 1px; 
+        }
+        .owl-carousel {
+            margin-top: 20px; 
+            position: relative; 
+        }
+        .owl-carousel .owl-nav {
+            position: absolute; 
+            top: 50%; 
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            pointer-events: none;
+        }
+       
+        .owl-carousel .owl-nav button.owl-prev,
+        .owl-carousel .owl-nav button.owl-next {
+            font-size: 35px; 
+            color: #ffffff; 
+            width: 60px; 
+            height: 60px; 
+            line-height: 40px; 
+            border-radius: 50%; 
+            transition: opacity 0.3s ease;
+            
+        }
+    
+        
+        .owl-carousel .owl-nav button.owl-prev:hover,
+        .owl-carousel .owl-nav button.owl-next:hover {
+            opacity: 1; 
+        }
+
+        .owl-carousel .owl-nav button.owl-prev:focus,
+        .owl-carousel .owl-nav button.owl-next:focus {
+            outline: none; 
+        }
+        .owl-carousel .owl-nav .owl-prev {
+            margin-left: 10px;
+        }
+        .owl-carousel .owl-nav .owl-next {
+            margin-right: 10px;
+        }
+
+        .owl-carousel .item {
+            margin: 10px; 
+        }
+
+        .owl-carousel .item img {
+            display: block;
+            height: 280px;
+            border-radius: 10px; 
+            object-fit: cover;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+        }
+
+        .overlay img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            
+        }
+
+        .overlay.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .rounded-image {
+            border-radius: 10px;
+        }
+        .titulo-descripcion {
+            margin-top: 20px; 
+            margin-bottom: 2px;
+          }
+          .iconos-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            color: gray;
+        }
+        
+        .iconos-container .icono-box {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+        
+        .iconos-container .icono-box .icono {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        
+        .iconos-container .icono-box .icono-text {
+            font-size: 15px;
+            margin-top: 5px;
+            line-height: 1;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 3px;
+        }
+        
+        .descripcion-texto {
+            width: 150%;
+            margin: 0;
+            text-align: justify;
+        }
+
+        #precio-hectarea {
+            background-color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            box-shadow: -10px 0 10px -5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            display: inline-block;
+            width: 40%;
+            margin-left: 60%;
+            margin-top: 40px;
+            text-align: right;
+        }
+        .sub-container {
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        button.solicitar {
+            background-color: transparent;
+              color: black;
+              border: none;  
+              border-width: 1px;  
+              border-style: solid;  
+              border-color: #888888; 
+              margin-left: 487px;
+              border-radius: 5px;
+              font-size: 15px;
+              font-family: Arial, sans-serif;
+              padding: 15px 35px;
+              cursor: pointer;
+              z-index: 3;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <img id="logo" src="Imgs/logo.png" alt="logo">
+                </div>
+                <div class="col-md-3 offset-md-6" id="boton">
+                    <p class="ingresar">
+                        <img src="Imgs/usuario.png" class="icono">
+                        <a href="iniciodesesión.html" target="_blank">Ingresar</a>
+                    </p>
+                </div>
+                <div>
+                    <button class="solicitar">Solicitar</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="profile-imagen-container">
+        <img class="profile-imagen" src="Imgs/Captura de Pantalla 2023-06-24 a la(s) 3.30.19 p. m..png" alt="user">
+        <div class="profile-text">
+            <p>La Via Lactea - Sopó - Cundinamarca</p>
+            <p>Ricardo Castro</p>
+        </div>
+    </div>
+    <div class="owl-carousel owl-theme">
+        <div class="item">
+            <img src="Imgs/23796418_8073bb.webp" class="d-block w-100" alt="Image 1">
+        </div>
+        <div class="item">
+            <img src="Imgs/terreno_en_tarqui_1140063685710264728.jpeg" class="d-block w-100" alt="Image 2">
+        </div>
+        <div class="item">
+            <img src="Imgs/vendo-hermosa-propiedad-de-92-hectareas-en-otavalo-14648834180.jpeg" class="d-block w-100" alt="Image 3">
+        </div>
+        <div class="item">
+            <img src="Imgs/vendo-una-propiedad-de-13-hectareas-en-otavalo-31528822947.jpeg" class="d-block w-100" alt="Image 4">
+        </div>
+        <div class="item">
+            <img src="Imgs/terreno_plano_en_venta_en_tarqui_sector_santa_lucrecia_7960092678371067756.jpeg" class="d-block w-100" alt="Image 5">
+        </div>
+        <div class="item">
+            <img src="Imgs/campo6.jpg" class="d-block w-100" alt="Image 6">
+        </div>
+    </div>
+    <div class="overlay">
+        <img src="Imgs/23796418_8073bb.webp" alt="Image Overlay" width="700px" class="rounded-image">
+    </div>
+    <section id="descripcion">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-6">
+        <h4 class="titulo-descripcion">Descripción</h4>
+        <p class="descripcion-texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias impedit molestiae officia sequi dolores veniam debitis voluptate veritatis, voluptatibus tenetur ad ut magnam quasi corrupti, libero voluptatem harum exercitationem? Nulla.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias impedit molestiae officia sequi dolores veniam debitis voluptate veritatis, voluptatibus tenetur ad ut magnam quasi corrupti, libero voluptatem harum exercitationem? Nulla.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias impedit molestiae officia sequi dolores veniam debitis voluptate veritatis, voluptatibus tenetur ad ut magnam quasi corrupti, libero voluptatem harum exercitationem? Nulla.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias impedit molestiae officia sequi dolores veniam debitis voluptate veritatis, voluptatibus tenetur ad ut magnam quasi corrupti, libero voluptatem harum exercitationem? Nulla.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias impedit molestiae officia sequi dolores veniam debitis voluptate veritatis, voluptatibus tenetur ad ut magnam quasi corrupti, libero voluptatem harum exercitationem? Nulla.
+        </p>
+    </div>
+    <div class="col-lg-6">
+        <div id="precio-hectarea">
+            <span style="color: gray;">Precio Arriendo por Hectárea (COP)</span>
+            <h3>$100.000</h3>
+            <span style="color: gray;">Precio Arriendo Propiedad (COP)</span>
+            <h3>$1.000.000</h3>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+<section id="iconos">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="iconos-container">
+                    <div class="icono-box">
+                        <img src="Imgs/6380579e817a827989fd2d318d05055c-icono-de-carretera-calle-curva.png" class="icono" alt="Icono 1">
+                        <p class="icono-text">Vias</p>
+                    </div>
+            <div class="icono-box">
+                        <img src="Imgs/png-transparent-computer-icons-wind-wave-rivers-angle-text-black-thumbnail.png" class="icono">
+                        <p class="icono-text">Rios</p>
+                    </div>
+               <div class="icono-box">
+                        <img src="Imgs/servicios.png" class="icono">
+                        <p class="icono-text">Servicios Publicos</p>
+                    </div>
+               <div class="icono-box">
+                        <img src="Imgs/weather_cloud_cloudy_sun_icon_134160.png" class="icono"> 
+                        <p class="icono-text">Clima</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="sub-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="sub-container">
+                <div class="sub-text">
+                <p class="sub-text">Principales</p>
+            </div>
+            <div class="sub-text">
+                <p class="sub-text">Si</p>
+            </div>
+            <div class="sub-text">
+                <p class="sub-text">Agua y Luz</p>
+            </div>
+            <div class="sub-text">
+                <p class="sub-text">Templado</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.owl-carousel').owlCarousel({
+                items: 3,
+                loop: true,
+                margin: 1,
+                nav: true,
+                navText: ["<i class='fas fa-chevron-left'></i>", "<i class='fas fa-chevron-right'></i>"],
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 3500,
+                autoplaySpeed: 1500,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 3
+                    }
+                }
+            });
+
+            $('.owl-carousel .item img').on('click', function() {
+                var imageUrl = $(this).attr('src');
+                $('.overlay img').attr('src', imageUrl);
+                $('.overlay').addClass('active');
+            });
+
+            $('.overlay').on('click', function() {
+                $(this).removeClass('active');
+            });
+        });
+    </script>
+</body>
+</html>
