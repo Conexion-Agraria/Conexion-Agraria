@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="img/icono.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" href="Imgs/icono.png">
+    <style>
+        *{
+            margin: 0; 
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: white;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+
+        #container{
+            margin-bottom: 0px;
+        }
+
+        nav {
+            background-color: white;
+            height: 52px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 2px 2px 7px gray;
+            margin-bottom: 0;
+            z-index: 3;
+        }
+
+        div .logo{
+            height: 31px;
+            width: 106px;
+            margin-left: 494px;
+            margin-top: 12px;
+        }
+
+        nav p {
+            font-size: 13px;
+            padding-top: 13px;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .ingresar a {
+            text-decoration: none;
+            color: black;
+            transition: color ease .3s;
+        }
+
+        nav a:hover{
+            color: gray;
+        }
+
+        .icono {
+            width: 18px;
+            height: 18px;
+            padding-right: 1px;
+        }
+
+        #seccion1{
+            background: url("Imgs/campo.jpg");
+            width: 100%;
+            height: 601px; 
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative; 
+            background-position: center;
+        }
+
+        form {
+            max-width: 200px;
+            height: 100px;
+        }
+
+        .form1 {
+            font-family: Arial, sans-serif;
+            top: 149px;
+            left: 208px;
+            position: absolute;
+        }
+        
+
+        .form2 {
+            font-family: Arial, sans-serif;
+            top: 183px;
+            left: 426px;
+            position: absolute;
+        }
+
+        input[type="email"], input[type="password"], input[type="text"], input[type="number"], input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            font-size: 15px;
+            color: black;
+            background-color: white;
+        }
+
+        .select-style {
+            width: 100%;
+            height: 44px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            font-size: 14px;
+            color: black;
+            background-color: white;
+        }
+
+        h1{
+            font-size: 22px;
+            color: white;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .center-elements {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 174vh;
+            width: 146vh;
+            text-align: center;
+        }
+
+        .Inicio {
+            text-decoration: none;
+            color: black;
+            transition: color ease .2s;
+            z-index: 3;
+        }
+
+        .Inicio:hover{
+            color: darkgray;
+        }
+
+        button {
+            background-color: #CCCCCC;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color ease-in-out .4s;
+            z-index: 3;
+        }
+
+        button:hover {
+            background-color: #999999;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <img class="logo" src="Imgs/logo.png" alt="logo">
+                </div>
+            </div>
+        </div>
+    </nav>
+   <section id="seccion1">
+        <form class="form1">
+            <h1>Registrarse</h1>
+            <input type="text" id="nombres" placeholder="Nombres">
+            <select id="tipoDocumento" class="select-style">
+                  <option value="" disabled selected hidden>Tipo de documento</option>
+                  <option value="CC">Cedula de ciudadania</option>
+                  <option value="CE">Cedula de extranjeria</option>
+                  <option value="NIT">NIT</option>
+            </select>
+            <input type="date" id="fecha" placeholder="Fecha de nacimiento">
+            <input type="number" id="telefono" placeholder="Telefono">
+            <input type="email" id="email" placeholder="Correo electrónico">
+        </form>
+        <form class="form2">
+            <input type="text" id="apellidos" placeholder="Apellidos">
+            <input type="number" id="ndocumento" placeholder="Numero de documento">
+            <input type="text" id="direccion" placeholder="Dirección">
+            <select id="Departamento" class="select-style">
+                <option value="" disabled selected hidden>Selecciona un departamento</option>
+                <option value="amazonas">Amazonas</option>
+                <option value="antioquia">Antioquia</option>
+                <option value="arauca">Arauca</option>
+                <option value="atlantico">Atlántico</option>
+                <option value="bolivar">Bolívar</option>
+                <option value="boyaca">Boyacá</option>
+                <option value="caldas">Caldas</option>
+                <option value="caqueta">Caquetá</option>
+                <option value="casanare">Casanare</option>
+                <option value="cauca">Cauca</option>
+                <option value="cesar">Cesar</option>
+                <option value="choco">Chocó</option>
+                <option value="cordoba">Córdoba</option>
+                <option value="cundinamarca">Cundinamarca</option>
+                <option value="guainia">Guainía</option>
+                <option value="guaviare">Guaviare</option>
+                <option value="huila">Huila</option>
+                <option value="guajira">La Guajira</option>
+                <option value="magdalena">Magdalena</option>
+                <option value="meta">Meta</option>
+                <option value="narino">Nariño</option>
+                <option value="norteSantander">Norte de Santander</option>
+                <option value="putumayo">Putumayo</option>
+                <option value="quindio">Quindío</option>
+                <option value="risaralda">Risaralda</option>
+                <option value="sanAndres">San Andrés y Providencia</option>
+                <option value="santander">Santander</option>
+                <option value="sucre">Sucre</option>
+                <option value="tolima">Tolima</option>
+                <option value="valleCauca">Valle del Cauca</option>
+                <option value="vaupes">Vaupés</option>
+                <option value="vichada">Vichada</option>
+            </select>
+            <input type="password" id="contraseña" placeholder="Contraseña">
+        </form>
+        <div class="center-elements">
+            <button onclick="limpiarContenido()">Registrarse</button>
+            <a href="iniciodesesión.html" class="Inicio"><p>¿Ya tienes cuenta? Inicia sesión</p></a>
+        </div>
+   </section> 
+   <script>
+        function limpiarContenido() {
+            var nombres = document.getElementById("nombres");
+            var apellidos = document.getElementById("apellidos");
+            var documento = document.getElementById("documentos");
+            var fecha = document.getElementById("fecha");
+            var telefono = document.getElementById("telefono");
+            var email = document.getElementById("email");
+            var ndocumento = document.getElementById("ndocumento");
+            var direccion = document.getElementById("direccion");
+            var contraseña = document.getElementById("contraseña");
+            var documento = document.getElementById("tipoDocumento");
+            var departamento = document.getElementById("Departamento");
+
+            nombres.value = ""; 
+            apellidos.value = "";
+            documento.value = ""; 
+            fecha.value = "";
+            telefono.value = ""; 
+            email.value = "";
+            ndocumento.value = ""; 
+            direccion.value = "";
+            contraseña.value = "";
+            documento.selectedIndex = 0; 
+            departamento.selectedIndex = 0; 
+        }
+   </script>
+</body>
+</html>
