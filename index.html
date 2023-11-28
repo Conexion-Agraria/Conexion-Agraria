@@ -9,6 +9,8 @@
     <link rel="icon" href="img/icono.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="icon" href="Imgs/icono.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
     <style>
         
         *{
@@ -52,20 +54,8 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        .ingresar a {
-            text-decoration: none;
-            color: black;
-            transition: color ease .3s;
-        }
-
         a:hover{
             color: gray;
-        }
-
-        .ingresar img {
-            width: 18px;
-            height: 18px;
-            padding-right: 1px;
         }
 
         #seccion1{
@@ -157,22 +147,31 @@
     </style>
 </head>
 <body>
-    <nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container d-flex justify-content-center">
+            <a class="navbar-brand" href="#">
+                <img id="logo" src="Imgs/logo.png" alt="logo">
+            </a>
+        </div>
+    </nav>       
+    <section id="seccion1"></section>
+    <section id="nueva">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
-                    <img id="logo" src="Imgs/logo.png" alt="logo">
+                <div class="col-md-6 d-flex align-items-center" style="font-family: 'Roboto', sans-serif;">
+                    <div class="text-center">
+                        <h2>Somos el Futuro de Colombia</h2>
+                        <p>La conexion entre el campo Colombiano y la industria agropecuaria. <br> Te ayudamos a construir en el campo a bajo costo. <br> Sacale provecho a tus tierras sin tener que venderlas.</p>
+                    </div>
                 </div>
-                <div class="col-md-3 offset-md-6" id="boton">
-                    <p class="ingresar">
-                        <img src="Imgs/usuario.png" class="icono">
-                        <a href="iniciodesesión.html" target="_blank">Ingresar</a>
-                    </p>
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <img src="Imgs/hombre-mayor-que-trabaja-campo-caja-verduras_329181-12492.avif" alt="Imagen" style="margin: 20px; border-radius: 15px; margin-top: 50px; box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);"">
+                    </div>
                 </div>
             </div>
         </div>
-    </nav>
-    <section id="seccion1"></section>
+    </section>
     <section id="seccion2">
         <div class="container">
             <div class="card">
