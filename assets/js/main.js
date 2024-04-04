@@ -1,5 +1,6 @@
 // Import the function to get data from Firebase
 import { getUserData } from "./firebase.js";
+import cardLand from "./cardsLand.js";
 
 // Function to initialize the application
 function initApp() {
@@ -23,4 +24,14 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     // Display the data in the user interface
     displayUserData(userData);
+    // Get land data (if not already available)
+    const landData = getLandData(); // This function should get the land data somehow
+
+    // Create an instance of CardLand
+    const cardLand = new CardLand();
+
+    // Assuming landData is an array with land data obtained from Firebase
+    landData.forEach(land => {
+        cardLand.createCard(land);
+    });
 });

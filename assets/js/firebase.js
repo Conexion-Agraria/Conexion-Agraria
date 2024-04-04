@@ -39,5 +39,7 @@ export const getUserData = () => {
       .catch(error => {
         console.error("Error al obtener datos:", error);
         return null;
+        
       });
+      
   };
