@@ -1,19 +1,19 @@
-        *{
-            margin: 0; 
+        * {
+            margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        body {
+
+        .body {
             background-color: white;
             overflow-x: hidden;
         }
 
-        #container{
+        #container {
             margin-bottom: 0px;
         }
 
-        nav {
+        .nav {
             background-color: white;
             height: 52px;
             position: fixed;
@@ -25,35 +25,36 @@
             z-index: 3;
         }
 
-        div #logo{
+        .div #logo {
             height: 31px;
             width: 106px;
             border-radius: 5px;
             margin-top: 12px;
         }
 
-        nav p {
+        .nav p {
             font-size: 13px;
             padding-top: 13px;
             text-align: center;
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        a:hover{
+        .a:hover {
             color: gray;
         }
 
-        #seccion1{
-            background: url("Imgs/campo.jpg");
+        .imgCampo {
             width: 100%;
-            height: 451px; 
+            height: 450px;
+            object-fit: cover;
             background-repeat: no-repeat;
             background-size: cover;
-            position: relative; 
+            position: relative;
             background-position: center;
+
         }
 
-        #seccion2{
+        .seccion2 {
             width: 100%;
             height: 400px;
             margin-top: 0;
@@ -66,14 +67,14 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        #seccion2 a{
+        #seccion2 a {
             text-decoration: none;
             color: black;
         }
 
         #seccion2 .container {
             display: flex;
-            justify-content: center; 
+            justify-content: center;
         }
 
         #seccion2 .card {
@@ -86,7 +87,7 @@
             transition: all 0.3 ease;
         }
 
-        #seccion2 .card:hover{
+        #seccion2 .card:hover {
             box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
             transform: translateY(-3%);
         }
@@ -102,7 +103,7 @@
             padding-top: 1px;
         }
 
-         #seccion2 .card .contenido h4 {
+        #seccion2 .card .contenido h4 {
             font-size: 18px;
             margin-bottom: 10px;
         }
@@ -120,12 +121,12 @@
         #seccion2 .card .contenido .especificacion i {
             margin-right: 5px;
         }
-        
-        #seccion2 b{
+
+        #seccion2 b {
             color: gray;
             font-size: 12px;
         }
 
-        #seccion2 .especificacion{
+        #seccion2 .especificacion {
             color: gray;
         }
