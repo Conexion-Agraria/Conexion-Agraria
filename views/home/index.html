@@ -16,9 +16,9 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                    <a class="navbar-brand" href="#">
-                      <img src="../../assets/Img/logo.png" alt="" width="90px" class="d-inline-block align-text-top">
-                    </a>
+                <a class="navbar-brand" href="#">
+                    <img src="../../assets/Img/logo.png" alt="" width="90px" class="d-inline-block align-text-top">
+                </a>
                 <div class="d-flex" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -27,7 +27,7 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Contactanos</a>
                         </li>
-                        
+
                 </div>
             </div>
         </nav>
@@ -41,17 +41,70 @@
                     <div class="row">
                         <div class="col-md-12 d-flex align-items-center" style="font-family: 'Roboto', sans-serif;">
                             <div class="text-center mt-3 mx-auto">
-                                <h3>La conexion entre el campo y la industria agropecuaria</h3>
-                                
+                                <h5>La conexion entre el campo y la industria agropecuaria</h5>
+
                             </div>
                         </div>
                     </div>
                 </div>
-        </main>
-        <footer>
-            <!-- Footer content -->
-            <p>&copy; 2024 Your App. All rights reserved.</p>
-        </footer>
+        </main><!-- MODAL BODY -->
+        <div class="modal-body">
+
+          <!-- Cards -->
+          <div class="container" id="containerCards"></div>
+
+          <!-- TOP 5 -->
+          <div class="container text-center">
+            <div id="leaderboard" style="display: none;">
+              <h1 class="text-center gold-font m-5 top_five">HALL OF FAME</h1>
+              <div class="row justify-content-center">
+                <div class="col-md-6">
+                  <table class="table table-striped table-borderless mx-auto">
+                    <thead>
+                      <tr>
+                        <th scope="col" class="gold-font">#</th>
+                        <th scope="col" class="gold-font">Nombre</th>
+                        <th scope="col" class="gold-font">Puntuación</th>
+                      </tr>
+                    </thead>
+                    <tbody id="leaderboardBody">
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Container footer-->
+<div class="container fixed-bottom">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+        <svg class="bi" width="30" height="24">
+          <use xlink:href="#bootstrap"></use>
+        </svg>
+      </a>
+      <span class="text-muted iva">© &copy; 2024 Conexión Agraria. All rights reserved.</span>
+    </div>
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+            <use xlink:href="#twitter"></use>
+          </svg></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+            <use xlink:href="#instagram"></use>
+          </svg></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+            <use xlink:href="#facebook"></use>
+          </svg></a></li>
+    </ul>
+  </footer>
+</div>
+    
         <!-- Include any necessary JavaScript files or libraries -->
         <!--My script main-->
         <script src="../../assets/js/main.js"></script>

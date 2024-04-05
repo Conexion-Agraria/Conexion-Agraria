@@ -1,5 +1,5 @@
 // Import firebase and getUserData function
-import firebase, { getUserData } from '../assets/js/firebase.js';
+import firebase, { getUserData } from 'assets/js/firebase.js';
 
 // Define ScrollController class
 class ScrollController {
