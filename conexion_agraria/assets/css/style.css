@@ -1,0 +1,78 @@
+
+@font-face {
+  font-family: Manrope !important;
+  src: url('../fonts/Manrope/static/Manrope-Bold.ttf') !important;
+}
+
+.contCard{
+  cursor: pointer;
+}
+
+.card-size {
+  border-radius: 5px;
+}
+
+
+.card-disappear {
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out; /* Agregar una transición suave */
+}
+.form-label {
+  margin-left: 190px; /* Alinear etiquetas de los campos a la izquierda */
+}
+
+/* Ajustes de estilo para el modal */
+.modal-header {
+  justify-content: flex-end; /* Alineación a la derecha */
+  border-bottom: none; /* Eliminar borde inferior del header */
+}
+
+.modal-content {
+  border-radius: 20px; /* Botones redondeados */
+}
+
+.form-control {
+  width: 60%; /* Ancho del campo de entrada */
+  margin: auto; /* Centrar el campo de entrada */
+}
+
+.btn-close {
+  background-color: transparent; /* Fondo transparente para el botón de cierre */
+  border: none; /* Eliminar borde */
+  color: #000; /* Color del icono de cierre */
+  font-size: 1.5rem; /* Tamaño del icono de cierre */
+  margin-right: 30px !important;
+}
+.enviar{
+  background-color: rgb(127, 121, 121) !important;
+  margin-left: 190px;
+  border: none;
+}
+.enviar:hover{
+  background-color: #07c33f !important; 
+  color: #f6f4f4 !important;
+  
+}
+.sonriente{
+  margin-left: 60px;
+}
+.card img {
+  border-radius: 5px; /* Ajusta el valor de border-radius según lo desees */
+}
+.btn-start{
+  background-color: rgb(127, 121, 121);
+  color: white !important;
+  border-radius: 10px;
+}
+.btn-start:hover{
+  background-color: #07c33f; 
+  color: #f6f4f4 !important;
+  border-radius: 10px;
+}
+
+.contactanos{
+  margin-left: 190px;
+}
+.tide{
+  margin-left: 140px;
+}
