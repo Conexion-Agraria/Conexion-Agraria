@@ -3,7 +3,7 @@ class Game {
     this.contGame = document.getElementById(contGame); // Contenedor de las cartas
     this.contCardClass = "contCard"; // Clase de las cartas
     this.getServer = window.location.origin; // Ruta del servidor
-    this.folderPath = "/games_memory"; // Carpeta de las imágenes
+    this.folderPath = "/conexion_agraria"; // Carpeta de las imágenes
     this.serverPath = this.getServer + this.folderPath; // Ruta completa del servidor
     this.URL = "https://conexion-agraria-default-rtdb.firebaseio.com/Api/Properties.json"; // URL de los datos JSON
     this.pathImg = this.serverPath + "/assets/img/memory/"; // Ruta de las imágenes
