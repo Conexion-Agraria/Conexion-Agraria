@@ -14,28 +14,37 @@
 
 <body>
   <!--Container header-->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-lg">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">
-        <img src="assets/img/logos/logo.png" alt="" width="90px" class="d-inline-block align-text-top">
+        <img src="assets/img/logos/logo_blanco.png" alt="" width="150px" class="d-inline-block align-text-top">
       </a>
       <div class="d-flex" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a id="btn_start" class="nav-link active btn-start" href="#" data-bs-toggle="modal"
-              data-bs-target="#gameModal">Contactanos</a>
+              data-bs-target="#gameModal" style="color: white; font-size: 20px;" onmouseover="this.style.color='black'"
+              onmouseout="this.style.color='white'">Contactanos</a>
           </li>
       </div>
     </div>
   </nav>
+
   <!--End Container header-->
 
   <div class="row align-items-center">
     <div class="col-md-12 position-relative text-center">
-      <img src="assets/img/background/fondo.jpg" class="img-fluid mb-5" alt="">
-      <h3 class="position-absolute top-50 start-50 translate-middle mt-4"
+      <img src="assets/img/background/sanpelayo.jpg" class="img-fluid mb-5" alt="">
+      <h1 class="custom-text"
         style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: rgb(255, 255, 255);">
-        La conexión que necesitabas</h3>
+        Sembrando futuro, cosechando éxito.</h1>
+      <p class="custom-text2"
+        style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: rgb(255, 255, 255);">
+        Creemos en el potencial sin explotar de la tierra colombiana. <br>
+        Impulsamos el desarrollo rural, generarando empleo y cultivando un futuro próspero para todos.</p>
+      <a href="#containerGame" class="scroll-down-arrow">
+        <img src="assets/img/icons/icons8-planta-94.png" alt="Scroll down" class="scroll-down-img">
+      </a>
     </div>
   </div>
   <div class="container">
@@ -48,72 +57,74 @@
       <img src="assets/img/background/sonriente.jpg" class="img-fluid mb-4" alt="">
       <h3 class="position-absolute top-50 start-50 sonriente"
         style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: white;">
-        Apoyamos al campo Colombiano</h3>
+        Uniendo tierras, creando oportunidades.</h3>
     </div>
   </div>
-  <div class="container">
-    <h4 class="row mb-2">Recomendado</h4>
-  </div>
-  <!-- CARDS -->
-  <div class="container" id="containerGame2"></div>
+
 
   <!-- MODAL -->
-<div class="modal fade" id="gameModal" tabindex="-1" aria-labelledby="gameModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen">
-    <div class="modal-content">
-      <!--HEADER MODAL-->
-      <header id="navbar" class="modal-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </header>
-      <!--END HEADER-->
-      <!-- Contenido del modal -->
-      <div class="modal-body">
-        <!-- Sección de la tarjeta -->
-        <div id="cardInfo">
-          <div class="container">
-            <div class="row align-items-center">
-              <!-- Aquí se mostrará la información de la tarjeta -->
-              <div class="col-md-12 d-flex justify-content-center align-items-center">
-                <img id="modal-image" class="img-fluid mb-3" alt="" style="border-radius: 15px;">
-              </div>
-              <div class="col-md-12 ">
-                <h2 id="modal-title" class="mb-3 tide"></h2>
-                <p id="modal-description" class="mb-3 tide"></p>
-                <p id="modal-medidas" class="mb-3 tide"></p>
-                <!-- Puedes agregar más campos aquí según la información que desees mostrar -->
+  <div class="modal fade custom-modal" id="gameModal" tabindex="-1" aria-labelledby="gameModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <!--HEADER MODAL-->
+        <header id="navbar" class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </header>
+        <!--END HEADER-->
+        <!-- Contenido del modal -->
+        <div class="modal-body">
+          <!-- Sección de la tarjeta -->
+          <div id="cardInfo">
+            <!-- Contenedor de la tarjeta -->
+            <div class="container">
+              <div class="row align-items-center">
+                <!-- Aquí se mostrará la información de la tarjeta -->
+                <div class="col-md-12 d-flex justify-content-center align-items-center">
+                  <img id="modal-image" class="img-fluid mb-3" alt="" style="border-radius: 15px;">
+                </div>
+                <div class="col-md-12 ">
+                  <h2 id="modal-title" class="mb-3 tide"></h2>
+                  <p id="modal-description" class="mb-3 tide"></p>
+                  <p id="modal-medidas" class="mb-3 tide"></p>
+                  <!-- Puedes agregar más campos aquí según la información que desees mostrar -->
+                </div>
               </div>
             </div>
           </div>
+
+          <!-- Sección del formulario de contacto -->
+          <div id="contactFormSection">
+            <!-- Contenedor con efecto transparente -->
+            <div class="form-container">
+              <form id="contactForm">
+                <h2 class="mb-4 contactanos">Contactanos</h2>
+                <h5 class="mb-4">Llena todos los campos con tus datos y escribenos detalladamente por que predio estas interezado y que proyecto deseas ejecutar.</h5>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                  <label for="telefono" class="form-label">Teléfono</label>
+                  <input type="tel" class="form-control" id="telefono" required>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Correo electrónico</label>
+                  <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3">
+                  <label for="message" class="form-label">Mensaje</label>
+                  <textarea class="form-control" id="message" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary enviar">Enviar</button>
+              </form>
+            </div>
+            <!-- Fin del formulario de contacto -->
+          </div>
         </div>
-        
-        <!-- Sección del formulario de contacto -->
-        <div id="contactFormSection">
-          <form id="contactForm">
-            <h2 class="mb-4 contactanos">Contactanos</h2>
-            <div class="mb-3">
-              <label for="name" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="name" required>
-            </div>
-            <div class="mb-3">
-              <label for="telefono" class="form-label">Teléfono</label>
-              <input type="tel" class="form-control" id="telefono" required>
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Correo electrónico</label>
-              <input type="email" class="form-control" id="email" required>
-            </div>
-            <div class="mb-3">
-              <label for="message" class="form-label">Mensaje</label>
-              <textarea class="form-control" id="message" rows="3" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary enviar">Enviar</button>
-          </form>
-        </div>
-        <!-- Fin del formulario de contacto -->
       </div>
     </div>
   </div>
-</div>
+
 
   <!--Container footer-->
   <div class="container">

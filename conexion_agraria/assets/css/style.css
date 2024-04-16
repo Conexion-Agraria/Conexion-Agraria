@@ -17,9 +17,7 @@
   opacity: 0;
   transition: opacity 0.7s ease-in-out; /* Agregar una transición suave */
 }
-.form-label {
-  margin-left: 190px; /* Alinear etiquetas de los campos a la izquierda */
-}
+
 
 /* Ajustes de estilo para el modal */
 .modal-header {
@@ -27,52 +25,92 @@
   border-bottom: none; /* Eliminar borde inferior del header */
 }
 
-.modal-content {
-  border-radius: 20px; /* Botones redondeados */
-}
-
-.form-control {
-  width: 60%; /* Ancho del campo de entrada */
-  margin: auto; /* Centrar el campo de entrada */
-}
 
 .btn-close {
   background-color: transparent; /* Fondo transparente para el botón de cierre */
   border: none; /* Eliminar borde */
   color: #000; /* Color del icono de cierre */
   font-size: 1.5rem; /* Tamaño del icono de cierre */
-  margin-right: 30px !important;
 }
 .enviar{
-  background-color: rgb(127, 121, 121) !important;
-  margin-left: 190px;
+  background-color: rgb(6, 6, 6) !important;
   border: none;
 }
 .enviar:hover{
-  background-color: #07c33f !important; 
-  color: #f6f4f4 !important;
+  background-color: #fafdfb !important; 
+  color: #000000 !important;
   
 }
-.sonriente{
-  margin-left: 60px;
-}
+
 .card img {
   border-radius: 5px; /* Ajusta el valor de border-radius según lo desees */
 }
-.btn-start{
-  background-color: rgb(127, 121, 121);
-  color: white !important;
-  border-radius: 10px;
-}
-.btn-start:hover{
-  background-color: #07c33f; 
-  color: #f6f4f4 !important;
-  border-radius: 10px;
-}
 
-.contactanos{
-  margin-left: 190px;
-}
+
 .tide{
   margin-left: 140px;
 }
+
+.navbar {
+  background-image: url('../img/background/sanpelayo.jpg') !important;
+  background-size: cover !important;
+  background-position: center top !important;
+}
+
+.custom-text {
+  position: absolute;
+  top: 58%; 
+  margin-left: 80px;
+  text-align:left; 
+  
+}
+.custom-text2 {
+  position: absolute;
+  top: 65%; 
+  margin-left: 80px;
+  text-align:left; 
+ 
+}
+
+.scroll-down-arrow {
+  position: absolute;
+  bottom: 250px; /* Ajusta la distancia desde abajo */
+  right: 20%; /* Ajusta la posición horizontal */
+  transform: translateX(50%); /* Centra el botón horizontalmente */
+}
+
+.scroll-down-img {
+  width: 6cap; /* Tamaño del botón */
+  animation: bounce 1s infinite; /* Agrega la animación de brinco */
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0); /* Posición inicial y final */
+  }
+  50% {
+      transform: translateY(-20px); /* Posición de brinco */
+  }
+}
+
+.modal-content{
+  background-image: url(../img/background/sanpelayo.jpg);
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; /
+}
+.modal-dialog {
+  max-width: 100%; /* Establece un ancho máximo para el modal */
+}
+.modal-body {
+  padding: 70px; /* Añade relleno al contenido del modal */
+}
+.form-container {
+  background-color: rgba(255, 255, 255, 0.388); /* Aumenta la transparencia */
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 700px; /* Establece el ancho máximo */
+  margin: auto; /* Centra horizontalmente el formulario */
+}
+
+
