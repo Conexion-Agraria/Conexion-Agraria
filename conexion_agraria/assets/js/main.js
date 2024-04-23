@@ -7,29 +7,41 @@ document.addEventListener("DOMContentLoaded", function () {
     const firebase = new FirebaseUser();
 
     // Define la función startGame() antes de la primera invocación
-    function startGame(numCards) {
+    function startGame() {
         // Pasa el segundo argumento (numCards) al constructor de la clase Game
-        game = new Game(contId, numCards); // Aquí debes pasar el valor deseado para numCards
+        game = new Game(contId); // Eliminar numCards de la instancia
         game.getDataFromFirebase();
     }
 
     // Iniciar el juego automáticamente al cargar la página
-    startGame(20); // Por ejemplo, aquí se pasa 20 como el valor de numCards
+    startGame(containerGame); // Por ejemplo, aquí se pasa 20 como el valor de numCards
 
     // Añadir evento click al botón "Contactanos"
     document.getElementById("btn_start").addEventListener("click", function () {
         // Limpiar el formulario al abrir el modal de contacto
         document.getElementById("contactForm").reset();
 
-        // Ocultar la información de la tarjeta
+        // Limpiar el contenido del modal
+        document.getElementById('modal-title').textContent = '';
+        document.getElementById('modal-description').innerHTML = '';
+        document.getElementById('modal-carousel-inner').innerHTML = '';
+
+        // Ocultar los detalles de las cards
         document.getElementById('cardInfo').style.display = 'none';
 
         // Mostrar el formulario
         document.getElementById('contactFormSection').style.display = 'block';
 
+        // Ocultar los botones de "Next" y "Previous" del carousel
+        document.querySelector('.carousel-control-prev').style.display = 'none';
+        document.querySelector('.carousel-control-next').style.display = 'none';
+        // Ocultar los botones del carousel
+        document.querySelector('.carousel-indicators').style.display = 'none';
+
         // Mostrar el modal
         $("#gameModal").modal("show");
     });
+
 
     // Escuchar el evento de envío del formulario
     const formUser = document.getElementById("contactForm");
@@ -65,4 +77,3 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-  
