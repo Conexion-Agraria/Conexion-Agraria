@@ -76,6 +76,7 @@ html {
 .form-container {
   background-color: rgba(62, 60, 60, 0.604);
   /* Aumenta la transparencia */
+  height: 500px; /* Ajusta la altura del formulario */
   padding: 20px;
   border-radius: 10px;
   max-width: 600px;
@@ -120,20 +121,29 @@ html {
   /* Fondo transparente con opacidad */
   border: 1px solid #a4a3a3;
   /* Borde opcional */
-  color: rgba(173, 170, 170, 0.8);
+  color: rgba(3, 3, 3, 3);
+  font-size: 15px;
   /* Color del texto con opacidad */
-  padding: 10px;
+  padding: 20px;
   /* Ajusta el relleno según sea necesario */
   border-radius: 5px;
   /* Borde redondeado */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   /* Sombra leve */
-  padding: 10px;
+  padding: 15px;
   /* Espaciado interno */
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   /* Espaciado inferior */
   width: 100%;
   /* Ancho completo */
+}
+
+/* Aplicar texto en mayúsculas a todos los campos de entrada del formulario */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+    text-transform: uppercase;
 }
 
 /* Estilos para los input al ser enfocados */
