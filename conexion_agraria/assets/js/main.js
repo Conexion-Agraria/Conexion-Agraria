@@ -3,18 +3,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // Variables globales
     var firebaseUser;
     var game;
-    const contId = "containerGame";
+    const contId = "contGame";
     const firebase = new FirebaseUser();
 
     // Define la función startGame() antes de la primera invocación
     function startGame() {
         // Pasa el segundo argumento (numCards) al constructor de la clase Game
         game = new Game(contId); // Eliminar numCards de la instancia
-        game.getDataFromFirebase();
+        game.getDataProperties();
     }
 
     // Iniciar el juego automáticamente al cargar la página
-    startGame(containerGame); // Por ejemplo, aquí se pasa 20 como el valor de numCards
+    startGame(contGame); // Por ejemplo, aquí se pasa 20 como el valor de numCards
 
     // Añadir evento click al botón "Contactanos"
     document.getElementById("btn_start").addEventListener("click", function () {

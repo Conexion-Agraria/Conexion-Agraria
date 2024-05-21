@@ -72,6 +72,20 @@ html {
 .modal-content {
   background-color: #f6f4f4;
 }
+.modal-description-container {
+  background-color: #c9cccf6b; /* Tono gris muy leve */
+  border-radius: 8px;       /* Bordes redondeados */
+  padding: 15px;            /* Padding */
+  margin: 25px 0;           /* Margen superior e inferior */
+  text-align: justify;      /* Texto justificado */
+}
+
+.modal-info {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
 
 .form-container {
   background-color: rgba(62, 60, 60, 0.604);
@@ -270,4 +284,7 @@ button[type="submit"]:hover {
 }
 .modal-info {
   font-size: 1.2rem;
+}
+.swiper-pagination {
+  margin-bottom: 15px; /* Ajusta este valor según tu preferencia */
 }
