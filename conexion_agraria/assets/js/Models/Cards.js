@@ -7,20 +7,18 @@ class Game {
     this.URL_DEPARTMENTS = "https://conexion-agraria-default-rtdb.firebaseio.com/Api/Department.json";
     this.pathImg = "https://firebasestorage.googleapis.com/v0/b/conexion-agraria.appspot.com/o/predios%2F";
 
-    // Almacenar las promesas de las solicitudes
     this.propertiesPromise = this.getDataProperties();
     this.departmentsPromise = this.getDepartments();
 
-    // Esperar a que ambas solicitudes se completen antes de continuar
     this.initializeGame();
   }
 
   async initializeGame() {
     try {
       const [properties, departments] = await Promise.all([this.propertiesPromise, this.departmentsPromise]);
-      this.departments = departments; // Asigna los datos de los departamentos
-      this.setElements(properties); // Crear las cartas
-      this.addClickEventToCards(); // Agregar evento clic a las cartas
+      this.departments = departments;
+      this.setElements(properties);
+      this.addClickEventToCards();
     } catch (error) {
       console.error("Error initializing game:", error);
     }
@@ -29,10 +27,18 @@ class Game {
   async getDataProperties() {
     try {
       const response = await fetch(this.URL_PROPERTIES);
-      return await response.json();
+      const data = await response.json();
+
+      // Convertir el objeto en un array de objetos
+      const propertiesArray = Object.keys(data).map(key => {
+        data[key].id = key; // Añadir el ID como una propiedad de cada objeto
+        return data[key];
+      });
+
+      return propertiesArray;
     } catch (error) {
       console.error("Error fetching data from Firebase:", error);
-      throw error; // Lanzar el error para ser manejado por initializeGame
+      throw error;
     }
   }
 
@@ -42,7 +48,7 @@ class Game {
       return await response.json();
     } catch (error) {
       console.error("Error fetching department data:", error);
-      throw error; // Lanzar el error para ser manejado por initializeGame
+      throw error;
     }
   }
 
