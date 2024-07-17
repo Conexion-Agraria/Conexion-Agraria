@@ -66,9 +66,9 @@ class Game {
   renderCards(arrayJson) {
     this.contGame.innerHTML = '';
 
-    let initialCardsHtml = '';
-    arrayJson.slice(0, 4).forEach(property => {
-      const firstImage = property.imagenes[0];
+    let cardsHtml = '';
+    arrayJson.forEach(property => {
+      const firstImage = property.imagenes && property.imagenes.length > 0 ? property.imagenes[0] : "default-image.jpg";
       let departmentName = "Desconocido";
       let municipalityName = "Desconocido";
       if (this.departments && this.departments[property.departamento]) {
@@ -78,7 +78,7 @@ class Game {
         }
       }
 
-      initialCardsHtml += `
+      cardsHtml += `
         <div class="col-md-3 mb-3 ${this.contCardClass}">
           <div class="card card-size" data-property='${JSON.stringify(property)}'>
             <img 
@@ -91,66 +91,16 @@ class Game {
               <p class="card-text" style="font-size: 1rem; margin-bottom: 0.2rem;">Departamento: ${departmentName}</p>
               <p class="card-text" style="font-size: 1rem; margin-bottom: 0.2rem;">Municipio: ${municipalityName}</p>
               <p class="card-text" style="font-size: 1rem; margin-bottom: 0.2rem;">Medida: ${property.medida}</p>
+              <p class="card-text" style="font-size: 1rem; margin-bottom: 0.2rem;">Precio Arriendo: ${property.precio_arriendo}</p>
             </div>
           </div>
         </div>`;
     });
 
-    initialCardsHtml += `
-      <div id="toggleCardsBtnContainer" class="toggle-btn-container">
-        <span id="toggleCardsBtn" class="toggle-btn">Mas...</span>
-      </div>`;
-
-    this.contGame.innerHTML = `<div class="row">${initialCardsHtml}</div>`;
-
-    let remainingCardsHtml = '';
-    arrayJson.slice(4).forEach(property => {
-      const firstImage = property.imagenes[0];
-      let departmentName = "Desconocido";
-      let municipalityName = "Desconocido";
-      if (this.departments && this.departments[property.departamento]) {
-        departmentName = this.departments[property.departamento].nombre;
-        if (property.municipio) {
-          municipalityName = property.municipio;
-        }
-      }
-
-      remainingCardsHtml += `
-        <div class="col-md-3 mb-3 ${this.contCardClass}">
-          <div class="card card-size" data-property='${JSON.stringify(property)}'>
-            <img 
-              class="card-img-top" 
-              src="${this.pathImg}${encodeURIComponent(firstImage)}?alt=media" 
-              alt="Card image cap"
-            >
-            <div class="card-body">
-              <h5 class="card-title" style="font-size: 1.2rem;"><strong>${property.nombre}</strong></h5>
-              <p class="card-text" style="font-size: 1rem; margin-bottom: 0.2rem;">Departamento: ${departmentName}</p>
-              <p class="card-text" style="font-size: 1rem; margin-bottom: 0.2rem;">Municipio: ${municipalityName}</p>
-              <p class="card-text" style="font-size: 1rem; margin-bottom: 0.2rem;">Medida: ${property.medida}</p>
-            </div>
-          </div>
-        </div>`;
-    });
-
-    const remainingCardsContainer = document.createElement('div');
-    remainingCardsContainer.classList.add('row', 'd-none');
-    remainingCardsContainer.id = 'remainingCardsContainer';
-    remainingCardsContainer.innerHTML = remainingCardsHtml;
-    this.contGame.appendChild(remainingCardsContainer);
-
-    const toggleCardsBtn = document.getElementById('toggleCardsBtn');
-    toggleCardsBtn.addEventListener('click', () => {
-      remainingCardsContainer.classList.toggle('d-none');
-      toggleCardsBtn.textContent = remainingCardsContainer.classList.contains('d-none') ? 'Mas...' : 'Menos';
-    });
-
-    const toggleCardsBtnContainer = document.getElementById('toggleCardsBtnContainer');
-    toggleCardsBtnContainer.classList.remove('col-md-3');
-    toggleCardsBtnContainer.classList.add('col-md-12');
+    this.contGame.innerHTML = `<div class="row">${cardsHtml}</div>`;
   }
 
-  async addClickEventToCards() {
+  addClickEventToCards() {
     const cards = this.contGame.querySelectorAll('.card');
     cards.forEach(card => {
       if (!card.dataset.clickEventAdded) {
@@ -159,7 +109,7 @@ class Game {
           const property = JSON.parse(card.dataset.property);
 
           const modalImageContainer = document.getElementById('modal-carousel-inner');
-          const imagesHtml = property.imagenes.map((image) => `
+          const imagesHtml = (property.imagenes || []).map((image) => `
             <div class="swiper-slide">
               <img src="${this.pathImg}${encodeURIComponent(image)}?alt=media" class="d-block w-100" alt="...">
             </div>
@@ -173,6 +123,8 @@ class Game {
           const modalClima = document.getElementById('modal-clima');
           const modalMedidas = document.getElementById('modal-medidas');
           const modalDescription = document.getElementById('modal-description');
+          const modalPreciometroCuadrado = document.getElementById('modal-precio-metroCuadrado');          
+          const modalPrecioArriendo = document.getElementById('modal-precio-arriendo');
 
           let departmentName = "Desconocido";
           let municipalityName = "Desconocido";
@@ -191,6 +143,11 @@ class Game {
           modalClima.innerHTML = `<ion-icon name="partly-sunny-outline"></ion-icon> <strong>Clima:</strong> ${property.clima}`;
           modalDescription.innerHTML = `<ion-icon name="document-text-outline"></ion-icon> <strong>Descripción:</strong> <br>${property.descripcion}`;
           modalMedidas.innerHTML = `<ion-icon name="cube-outline"></ion-icon> <strong>Medida:</strong> ${property.medida}`;
+          modalPreciometroCuadrado.innerHTML = `<ion-icon name="cash-outline"></ion-icon> <strong>Precio por metro cuadrado:</strong> ${property.precio_metroCuadrado || "Desconocido"}`;          
+          modalPrecioArriendo.innerHTML = `<ion-icon name="cash-outline"></ion-icon> <strong>Precio de arriendo:</strong> ${property.precio_arriendo}`;
+          
+          const meInteresaButton = document.querySelector('.me-interesa-button');
+          meInteresaButton.dataset.predioId = property.id;
 
           document.getElementById('contactFormSection').style.display = 'none';
           document.getElementById('cardInfo').style.display = 'block';
@@ -231,4 +188,25 @@ class Game {
       }
     });
   }
+
+  addMeInteresaEvent() {
+    const meInteresaButton = document.querySelector('.me-interesa-button');
+    meInteresaButton.addEventListener('click', () => {
+      const predioId = meInteresaButton.dataset.predioId;
+      this.cleanContactForm(predioId);
+      document.getElementById('cardInfo').style.display = 'none';
+      document.getElementById('contactFormSection').style.display = 'block';
+    });
+  }
+
+  cleanContactForm(predioId) {
+    const contactForm = document.getElementById('contactForm');
+    contactForm.reset(); // Limpiar el formulario
+    document.getElementById('predioId').value = predioId;
+  }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const game = new Game('contGame');
+  game.addMeInteresaEvent();
+});
