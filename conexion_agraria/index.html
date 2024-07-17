@@ -127,8 +127,10 @@
                 </div>
                 <div class="mb-3">
                   <label for="phone" class="form-label">Teléfono</label>
-                  <input type="tel" class="form-control" id="phone" name="phone" required>
-                </div>
+                  <input type="text" pattern="[0-9]+" class="form-control" id="phone" name="phone" required>
+                  <div class="invalid-feedback">Por favor ingrese solo números.</div>
+              </div>
+              
                 <div class="mb-3">
                   <label for="message" class="form-label">Mensaje</label>
                   <textarea class="form-control" id="message" name="message" rows="3" required></textarea>

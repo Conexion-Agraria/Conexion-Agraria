@@ -18,6 +18,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 contactForm.reset();
             }
 
+            // Limpia el input del ID
+            const propertyIdInput = document.getElementById("predioId");
+            if (propertyIdInput) {
+                propertyIdInput.value = '';
+            }
+
             const modalTitle = document.getElementById('modal-title');
             const modalDescription = document.getElementById('modal-description');
             const modalCarouselInner = document.getElementById('modal-carousel-inner');
