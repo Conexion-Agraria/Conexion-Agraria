@@ -352,3 +352,27 @@ input:invalid + .invalid-feedback {
 .modal-form {
   padding: 50px !important; /* Ajusta el relleno */
 }
+/* Estilo del botón en su estado normal */
+.btn-primary.me-interesa-button {
+  background-color: black; /* Fondo negro */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 1.1rem !important; /* Tamaño de la fuente */
+  cursor: pointer; /* Cambia el cursor al pasar sobre él */
+  transition: background-color 0.3s, color 0.3s; /* Transición suave */
+}
+
+/* Estilo del botón en el estado hover */
+.btn-primary.me-interesa-button:hover {
+  background-color: white; /* Fondo blanco */
+  color: black; /* Texto negro */
+  border: 1px solid black; /* Añade un borde negro al pasar el cursor */
+}
+
+/* Estilo del botón en el estado activo (opcional) */
+.btn-primary.me-interesa-button:active {
+  background-color: #ccc; /* Fondo gris claro al hacer clic */
+  color: black; /* Texto negro */
+}
