@@ -78,9 +78,12 @@ class Game {
         }
       }
 
+      const isRented = property.estado === 'arrendado';
+
       cardsHtml += `
         <div class="col-md-3 mb-3 ${this.contCardClass}">
           <div class="card card-size" data-property='${JSON.stringify(property)}'>
+            ${isRented ? '<div class="ribbon"><span>Arrendado</span></div>' : ''}
             <img 
               class="card-img-top" 
               src="${this.pathImg}${encodeURIComponent(firstImage)}?alt=media" 
@@ -100,94 +103,95 @@ class Game {
     this.contGame.innerHTML = `<div class="row">${cardsHtml}</div>`;
   }
 
+
   addClickEventToCards() {
     const cards = this.contGame.querySelectorAll('.card');
     cards.forEach(card => {
-        if (!card.dataset.clickEventAdded) {
-            card.dataset.clickEventAdded = true;
-            card.addEventListener('click', () => {
-                const property = JSON.parse(card.dataset.property);
+      if (!card.dataset.clickEventAdded) {
+        card.dataset.clickEventAdded = true;
+        card.addEventListener('click', () => {
+          const property = JSON.parse(card.dataset.property);
 
-                const modalImageContainer = document.getElementById('modal-carousel-inner');
-                const imagesHtml = (property.imagenes || []).map((image) => `
+          const modalImageContainer = document.getElementById('modal-carousel-inner');
+          const imagesHtml = (property.imagenes || []).map((image) => `
                     <div class="swiper-slide">
                         <img src="${this.pathImg}${encodeURIComponent(image)}?alt=media" class="d-block w-100" alt="...">
                     </div>
                 `).join("");
-                modalImageContainer.innerHTML = imagesHtml;
+          modalImageContainer.innerHTML = imagesHtml;
 
-                const modalTitle = document.getElementById('modal-title');
-                const modalDireccion = document.getElementById('modal-direccion');
-                const modalDepartamento = document.getElementById('modal-departamento');
-                const modalMunicipio = document.getElementById('modal-municipio');
-                const modalClima = document.getElementById('modal-clima');
-                const modalMedidas = document.getElementById('modal-medidas');
-                const modalDescription = document.getElementById('modal-description');
-                const modalPreciometroCuadrado = document.getElementById('modal-precio-metroCuadrado');          
-                const modalPrecioArriendo = document.getElementById('modal-precio-arriendo');
+          const modalTitle = document.getElementById('modal-title');
+          const modalDireccion = document.getElementById('modal-direccion');
+          const modalDepartamento = document.getElementById('modal-departamento');
+          const modalMunicipio = document.getElementById('modal-municipio');
+          const modalClima = document.getElementById('modal-clima');
+          const modalMedidas = document.getElementById('modal-medidas');
+          const modalDescription = document.getElementById('modal-description');
+          const modalPreciometroCuadrado = document.getElementById('modal-precio-metroCuadrado');
+          const modalPrecioArriendo = document.getElementById('modal-precio-arriendo');
 
-                let departmentName = "Desconocido";
-                let municipalityName = "Desconocido";
+          let departmentName = "Desconocido";
+          let municipalityName = "Desconocido";
 
-                if (this.departments && this.departments[property.departamento]) {
-                    departmentName = this.departments[property.departamento].nombre;
-                    if (property.municipio) {
-                        municipalityName = property.municipio;
-                    }
-                }
+          if (this.departments && this.departments[property.departamento]) {
+            departmentName = this.departments[property.departamento].nombre;
+            if (property.municipio) {
+              municipalityName = property.municipio;
+            }
+          }
 
-                modalTitle.textContent = property.nombre;
-                modalDireccion.innerHTML = `<ion-icon name="location-outline"></ion-icon> <strong>Dirección:</strong> ${property.direccion}`;
-                modalDepartamento.innerHTML = `<ion-icon name="business-outline"></ion-icon> <strong>Departamento:</strong> ${departmentName}`;
-                modalMunicipio.innerHTML = `<ion-icon name="home-outline"></ion-icon> <strong>Municipio:</strong> ${municipalityName}`;
-                modalClima.innerHTML = `<ion-icon name="partly-sunny-outline"></ion-icon> <strong>Clima:</strong> ${property.clima}`;
-                modalDescription.innerHTML = `<ion-icon name="document-text-outline"></ion-icon> <strong>Descripción:</strong> <br>${property.descripcion}`;
-                modalMedidas.innerHTML = `<ion-icon name="cube-outline"></ion-icon> <strong>Medida:</strong> ${property.medida}`;
-                modalPreciometroCuadrado.innerHTML = `<ion-icon name="cash-outline"></ion-icon> <strong>Precio por metro cuadrado:</strong> ${property.precio_metro_cuadrado || "Desconocido"}`;          
-                modalPrecioArriendo.innerHTML = `<ion-icon name="cash-outline"></ion-icon> <strong>Precio de arriendo:</strong> ${property.precio_arriendo}`;
-                
-                const meInteresaButton = document.querySelector('.me-interesa-button');
-                meInteresaButton.dataset.predioId = property.id;
+          modalTitle.textContent = property.nombre;
+          modalDireccion.innerHTML = `<ion-icon name="location-outline"></ion-icon> <strong>Dirección:</strong> ${property.direccion}`;
+          modalDepartamento.innerHTML = `<ion-icon name="business-outline"></ion-icon> <strong>Departamento:</strong> ${departmentName}`;
+          modalMunicipio.innerHTML = `<ion-icon name="home-outline"></ion-icon> <strong>Municipio:</strong> ${municipalityName}`;
+          modalClima.innerHTML = `<ion-icon name="partly-sunny-outline"></ion-icon> <strong>Clima:</strong> ${property.clima}`;
+          modalDescription.innerHTML = `<ion-icon name="document-text-outline"></ion-icon> <strong>Descripción:</strong> <br>${property.descripcion}`;
+          modalMedidas.innerHTML = `<ion-icon name="cube-outline"></ion-icon> <strong>Medida:</strong> ${property.medida}`;
+          modalPreciometroCuadrado.innerHTML = `<ion-icon name="cash-outline"></ion-icon> <strong>Precio por metro cuadrado:</strong> ${property.precio_metro_cuadrado || "Desconocido"}`;
+          modalPrecioArriendo.innerHTML = `<ion-icon name="cash-outline"></ion-icon> <strong>Precio de arriendo:</strong> ${property.precio_arriendo}`;
 
-                document.getElementById('contactFormSection').style.display = 'none';
-                document.getElementById('cardInfo').style.display = 'block';
-                $('#gameModal').modal('show');
+          const meInteresaButton = document.querySelector('.me-interesa-button');
+          meInteresaButton.dataset.predioId = property.id;
 
-                if (this.modalSwiper) {
-                    this.modalSwiper.destroy();
-                }
+          document.getElementById('contactFormSection').style.display = 'none';
+          document.getElementById('cardInfo').style.display = 'block';
+          $('#gameModal').modal('show');
 
-                this.modalSwiper = new Swiper('.modal-swiper-container', {
-                    effect: 'coverflow',
-                    grabCursor: true,
-                    centeredSlides: true,
-                    loop: true,
-                    slidesPerView: 'auto',
-                    coverflowEffect: {
-                        rotate: 0,
-                        stretch: 0,
-                        depth: 100,
-                        modifier: 2.5,
-                    },
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true,
-                        renderBullet: function (index, className) {
-                            return '<span class="' + className + '"></span>';
-                        },
-                    },
-                    navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                    },
-                    threshold: 4,
-                    speed: 900,
-                    initialSlide: property.imagenes.length - 1,
-                });
-            });
-        }
+          if (this.modalSwiper) {
+            this.modalSwiper.destroy();
+          }
+
+          this.modalSwiper = new Swiper('.modal-swiper-container', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            loop: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2.5,
+            },
+            pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+              renderBullet: function (index, className) {
+                return '<span class="' + className + '"></span>';
+              },
+            },
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            },
+            threshold: 4,
+            speed: 900,
+            initialSlide: property.imagenes.length - 1,
+          });
+        });
+      }
     });
-}
+  }
 
 
   addMeInteresaEvent() {

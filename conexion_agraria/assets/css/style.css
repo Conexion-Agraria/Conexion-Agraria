@@ -288,3 +288,67 @@ button[type="submit"]:hover {
 .swiper-pagination {
   margin-bottom: 15px; /* Ajusta este valor según tu preferencia */
 }
+.invalid-feedback {
+  font-size: 1.1rem;
+  display: none;
+  color: red;
+}
+
+input:invalid + .invalid-feedback {
+  display: block;
+}
+.ribbon {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px;
+  height: 75px;
+  text-align: right;
+}
+
+.ribbon span {
+  font-size: 12px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 100px;
+  display: block;
+  background: #79A70A;
+  background: linear-gradient(#FF0000 0%, #FF0000 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px;
+  right: -21px;
+}
+
+/* Aumenta el tamaño de las etiquetas y textos de los inputs */
+#contactFormSection .form-label {
+  font-size: 1.6rem; /* Ajusta el tamaño según sea necesario */
+  margin-top: 1px; /* Ajusta la distancia superior del primer label */
+}
+
+#contactFormSection .form-control {
+  font-size: 2rem; /* Ajusta el tamaño según sea necesario */
+}
+
+/* Opcional: Ajusta el tamaño del título del modal */
+#contactFormSection .modal-title {
+  font-size: 3rem; /* Ajusta el tamaño según sea necesario */
+  text-align: center; /* Centra el título horizontalmente */
+  margin-top: 30px; /* Ajusta la distancia desde el borde superior del contenedor */
+
+}
+
+#contactFormSection .btn-primary {
+  font-size: 1.2rem; /* Ajusta el tamaño según sea necesario */
+}
+/* Estilos específicos para el formulario dentro del modal */
+.modal-form {
+  padding: 50px !important; /* Ajusta el relleno */
+}

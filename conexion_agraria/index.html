@@ -115,18 +115,19 @@
 
             <div id="contactFormSection" style="display:none;">
               <h5 class="modal-title" id="contactModalLabel">Contactanos</h5>
-              <form id="contactForm">
+              <form id="contactForm" class="modal-form">
                 <input type="hidden" id="predioId" name="predioId" value="">
                 <div class="mb-3">
-                  <label for="name" class="form-label">Nombre</label>
-                  <input type="text" class="form-control" id="name" name="name" required>
+                  <label for="name" class="form-label">Nombre y Apellido</label>
+                  <input type="text" class="form-control" id="name" name="name" minlength="3" maxlength="50" required>
+                  <div class="invalid-feedback">El nombre y apellido deben tener entre 3 y 50 caracteres y solo contener letras.</div>
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
                   <input type="email" class="form-control" id="email" name="email" required>
                 </div>
                 <div class="mb-3">
-                  <label for="phone" class="form-label">Teléfono</label>
+                  <label for="phone" class="form-label">Celular</label>
                   <input type="text" pattern="[0-9]+" class="form-control" id="phone" name="phone" required>
                   <div class="invalid-feedback">Por favor ingrese solo números.</div>
               </div>
