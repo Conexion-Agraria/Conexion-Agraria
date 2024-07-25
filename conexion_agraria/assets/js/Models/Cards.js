@@ -35,7 +35,10 @@ class Game {
         return data[key];
       });
 
-      return propertiesArray;
+      // Filtrar propiedades con estado_predio_id igual a "estado1" o "estado2"
+      const filteredProperties = propertiesArray.filter(property => property.estado_predio_id === "estado1" || property.estado_predio_id === "estado2");
+
+      return filteredProperties;
     } catch (error) {
       console.error("Error fetching data from Firebase:", error);
       throw error;
@@ -103,7 +106,6 @@ class Game {
     this.contGame.innerHTML = `<div class="row">${cardsHtml}</div>`;
   }
 
-
   addClickEventToCards() {
     const cards = this.contGame.querySelectorAll('.card');
     cards.forEach(card => {
@@ -114,10 +116,11 @@ class Game {
 
           const modalImageContainer = document.getElementById('modal-carousel-inner');
           const imagesHtml = (property.imagenes || []).map((image) => `
-                    <div class="swiper-slide">
-                        <img src="${this.pathImg}${encodeURIComponent(image)}?alt=media" class="d-block w-100" alt="...">
-                    </div>
-                `).join("");
+                          <div class="swiper-slide">
+                              ${property.estado === 'arrendado' ? '<div class="ribbon"><span>Arrendado</span></div>' : ''}
+                              <img src="${this.pathImg}${encodeURIComponent(image)}?alt=media" class="d-block w-100" alt="...">
+                          </div>
+                      `).join("");
           modalImageContainer.innerHTML = imagesHtml;
 
           const modalTitle = document.getElementById('modal-title');
@@ -152,6 +155,13 @@ class Game {
 
           const meInteresaButton = document.querySelector('.me-interesa-button');
           meInteresaButton.dataset.predioId = property.id;
+
+          // Ocultar el botón "Me interesa" si la propiedad está arrendada
+          if (property.estado === 'arrendado') {
+            meInteresaButton.style.display = 'none';
+          } else {
+            meInteresaButton.style.display = 'block';
+          }
 
           document.getElementById('contactFormSection').style.display = 'none';
           document.getElementById('cardInfo').style.display = 'block';
