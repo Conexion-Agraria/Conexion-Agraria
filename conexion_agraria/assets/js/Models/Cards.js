@@ -113,16 +113,16 @@ class Game {
         card.dataset.clickEventAdded = true;
         card.addEventListener('click', () => {
           const property = JSON.parse(card.dataset.property);
-
+  
           const modalImageContainer = document.getElementById('modal-carousel-inner');
           const imagesHtml = (property.imagenes || []).map((image) => `
-                          <div class="swiper-slide">
-                              ${property.estado === 'arrendado' ? '<div class="ribbon"><span>Arrendado</span></div>' : ''}
-                              <img src="${this.pathImg}${encodeURIComponent(image)}?alt=media" class="d-block w-100" alt="...">
-                          </div>
-                      `).join("");
+            <div class="swiper-slide">
+              ${property.estado === 'arrendado' ? '<div class="ribbon"><span>Arrendado</span></div>' : ''}
+              <img src="${this.pathImg}${encodeURIComponent(image)}?alt=media" class="d-block w-100" alt="...">
+            </div>
+          `).join("");
           modalImageContainer.innerHTML = imagesHtml;
-
+  
           const modalTitle = document.getElementById('modal-title');
           const modalDireccion = document.getElementById('modal-direccion');
           const modalDepartamento = document.getElementById('modal-departamento');
@@ -132,17 +132,23 @@ class Game {
           const modalDescription = document.getElementById('modal-description');
           const modalPreciometroCuadrado = document.getElementById('modal-precio-metroCuadrado');
           const modalPrecioArriendo = document.getElementById('modal-precio-arriendo');
-
+          const modalTipoTierra = document.getElementById('modal-tipoTierra');
+          const modalRiosCercanos = document.getElementById('modal-riosCercanos');
+          const modalServiciosDisponibles = document.getElementById('modal-serviciosDisponibles');
+          const modalDetallesAdicionales = document.getElementById('modal-detallesAdicionales');
+          const modalTipoCultivo = document.getElementById('modal-tipoCultivo');
+          const modalTipoGanaderia = document.getElementById('modal-tipoGanaderia');
+  
           let departmentName = "Desconocido";
           let municipalityName = "Desconocido";
-
+  
           if (this.departments && this.departments[property.departamento]) {
             departmentName = this.departments[property.departamento].nombre;
             if (property.municipio) {
               municipalityName = property.municipio;
             }
           }
-
+  
           modalTitle.textContent = property.nombre;
           modalDireccion.innerHTML = `<ion-icon name="location-outline"></ion-icon> <strong>Dirección:</strong> ${property.direccion}`;
           modalDepartamento.innerHTML = `<ion-icon name="business-outline"></ion-icon> <strong>Departamento:</strong> ${departmentName}`;
@@ -152,25 +158,34 @@ class Game {
           modalMedidas.innerHTML = `<ion-icon name="cube-outline"></ion-icon> <strong>Medida:</strong> ${property.medida}`;
           modalPreciometroCuadrado.innerHTML = `<ion-icon name="cash-outline"></ion-icon> <strong>Precio por metro cuadrado:</strong> ${property.precio_metro_cuadrado || "Desconocido"}`;
           modalPrecioArriendo.innerHTML = `<ion-icon name="cash-outline"></ion-icon> <strong>Precio de arriendo:</strong> ${property.precio_arriendo}`;
-
+          modalTipoTierra.innerHTML = `<ion-icon name="leaf-outline"></ion-icon> <strong>Tipo de tierra:</strong> ${property.tipo_tierra || "Desconocido"}`;
+          modalRiosCercanos.innerHTML = `<ion-icon name="water-outline"></ion-icon> <strong>Ríos cercanos:</strong> ${property.rios_cercanos ? property.rios_cercanos.join(", ") : "No especificado"}`;
+          modalServiciosDisponibles.innerHTML = `<ion-icon name="build-outline"></ion-icon> <strong>Servicios disponibles:</strong> ${property.servicios_disponibles ? property.servicios_disponibles.join(", ") : "No especificado"}`;
+          modalDetallesAdicionales.innerHTML = `<ion-icon name="information-circle-outline"></ion-icon> <strong>Detalles adicionales:</strong> <br>
+            <strong>Acceso:</strong> ${property.detalles_adicionales?.acceso || "No especificado"}<br>
+            <strong>Distancia a la ciudad:</strong> ${property.detalles_adicionales?.distancia_ciudad || "No especificado"}<br>
+            <strong>Topografía:</strong> ${property.detalles_adicionales?.topografia || "No especificado"}<br>
+            <strong>Zonificación:</strong> ${property.detalles_adicionales?.zonificacion || "No especificado"}`;
+          modalTipoCultivo.innerHTML = `<ion-icon name="nutrition-outline"></ion-icon> <strong>Tipo de cultivo:</strong> ${property.tipo_cultivo ? property.tipo_cultivo.join(", ") : "No especificado"}`;
+          modalTipoGanaderia.innerHTML = `<ion-icon name="paw-outline"></ion-icon> <strong>Tipo de ganadería:</strong> ${property.tipo_ganaderia ? property.tipo_ganaderia.join(", ") : "No especificado"}`;
+  
           const meInteresaButton = document.querySelector('.me-interesa-button');
           meInteresaButton.dataset.predioId = property.id;
-
-          // Ocultar el botón "Me interesa" si la propiedad está arrendada
+  
           if (property.estado === 'arrendado') {
             meInteresaButton.style.display = 'none';
           } else {
             meInteresaButton.style.display = 'block';
           }
-
+  
           document.getElementById('contactFormSection').style.display = 'none';
           document.getElementById('cardInfo').style.display = 'block';
           $('#gameModal').modal('show');
-
+  
           if (this.modalSwiper) {
             this.modalSwiper.destroy();
           }
-
+  
           this.modalSwiper = new Swiper('.modal-swiper-container', {
             effect: 'coverflow',
             grabCursor: true,
@@ -202,7 +217,7 @@ class Game {
       }
     });
   }
-
+  
 
   addMeInteresaEvent() {
     const meInteresaButton = document.querySelector('.me-interesa-button');
