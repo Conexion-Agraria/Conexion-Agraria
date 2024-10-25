@@ -23,9 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const telefono = document.getElementById("phone").value.trim();
             const email = document.getElementById("email").value.trim();
             const message = document.getElementById("message").value.trim();
-
-            // Capturar el valor del predioId
             const predioId = document.getElementById("predioId").value.trim();
+            const estado = document.getElementById("estado").value.trim(); // Capturar el campo oculto
 
             // Validaciones
             if (!validateName(nombre)) {
@@ -53,7 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 telefono: telefono,
                 correo: email,
                 descripcion: message,
-                predioId: predioId // Asegurarse de incluir predioId
+                predioId: predioId,
+                estado: estado // Incluir el campo 'estado' en los datos enviados
             };
 
             try {

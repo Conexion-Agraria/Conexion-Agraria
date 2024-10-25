@@ -73,7 +73,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <h2 id="modal-title" class="mb-5 text-center"></h2>
-            
+
                     <div class="swiper-container modal-swiper-container">
                       <div class="swiper-wrapper" id="modal-carousel-inner"></div>
                       <div class="tranding-slider-control">
@@ -86,11 +86,11 @@
                         <div class="swiper-pagination"></div>
                       </div>
                     </div>
-            
+
                     <div class="modal-description-container mt-4">
                       <p id="modal-description" class="modal-info"></p>
                     </div>
-            
+
                     <div class="row mt-4">
                       <div class="col-md-6">
                         <p id="modal-departamento" class="modal-info mb-3"></p>
@@ -110,43 +110,53 @@
                         <div id="modal-detallesAdicionales" class="modal-info mb-3"></div>
                       </div>
                     </div>
-            
+
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-primary me-interesa-button" data-predio-id="">Me interesa</button>
+                      <button type="button" class="btn btn-primary me-interesa-button" data-predio-id="">Me
+                        interesa</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            
-            
+
+
 
             <div id="contactFormSection" style="display:none;">
-              <h5 class="modal-title" id="contactModalLabel">Contactanos</h5>
+              <h5 class="modal-title" id="contactModalLabel">Contáctanos</h5>
               <form id="contactForm" class="modal-form">
+                <!-- Campo oculto para el predioId -->
                 <input type="hidden" id="predioId" name="predioId" value="">
+                <!-- Campo oculto para el estado -->
+                <input type="hidden" id="estado" name="estado" value="sin_resolver">
+
                 <div class="mb-3">
                   <label for="name" class="form-label">Nombre y Apellido</label>
                   <input type="text" class="form-control" id="name" name="name" minlength="3" maxlength="50" required>
-                  <div class="invalid-feedback">El nombre y apellido deben tener entre 3 y 50 caracteres y solo contener letras.</div>
+                  <div class="invalid-feedback">El nombre y apellido deben tener entre 3 y 50 caracteres y solo contener
+                    letras.</div>
                 </div>
+
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
                   <input type="email" class="form-control" id="email" name="email" required>
                 </div>
+
                 <div class="mb-3">
                   <label for="phone" class="form-label">Celular</label>
                   <input type="text" pattern="[0-9]+" class="form-control" id="phone" name="phone" required>
                   <div class="invalid-feedback">Por favor ingrese solo números.</div>
-              </div>
-              
+                </div>
+
                 <div class="mb-3">
                   <label for="message" class="form-label">Mensaje</label>
                   <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
                 </div>
+
                 <button type="submit" class="btn btn-primary">Enviar</button>
               </form>
             </div>
+
 
           </div>
         </div>
